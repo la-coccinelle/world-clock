@@ -28,19 +28,21 @@ function updateTime() {
 
 function updateCity(event) {
   let citySelectedTimeZone = event.target.value;
-  let citiesElement = document.querySelector("#cities");
-  let cityUpdatedTimeZone = moment().tz(citySelectedTimeZone);
+  if (citySelectedTimeZone === "current") {
+    citySelectedTimeZone = moment.tz.guess();
+  }
+
+  let cityTime = moment().tz(citySelectedTimeZone);
   let cityName = citySelectedTimeZone.replace("_", " ").split("/")[1];
+  let citiesElement = document.querySelector("#cities");
 
   citiesElement.innerHTML = `       
         <div class="city">
           <div>
             <h2>${cityName}</h2>
-            <div class="date">${cityUpdatedTimeZone.format(
-              "MMMM Do YYYY"
-            )}</div>
+            <div class="date">${cityTime.format("MMMM Do YYYY")}</div>
           </div>
-          <div class="time">${cityUpdatedTimeZone.format(
+          <div class="time">${cityTime.format(
             "h:mm:ss [<small>]A[</small>]"
           )}</div>
         </div>`;
