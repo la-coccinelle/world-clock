@@ -1,4 +1,17 @@
 function updateTime() {
+  let tokyoElement = document.querySelector("#tokyo");
+  if (tokyoElement) {
+    let tokyoDateElement = tokyoElement.querySelector(".date");
+    let tokyoTimeElement = tokyoElement.querySelector(".time");
+
+    let tokyoTimeZone = moment().tz("Asia/Tokyo");
+
+    tokyoDateElement.innerHTML = tokyoTimeZone.format("MMMM Do YYYY");
+    tokyoTimeElement.innerHTML = tokyoTimeZone.format(
+      "h:mm:ss [<small>]A[</small>]"
+    );
+  }
+
   let warsawElement = document.querySelector("#warsaw");
   if (warsawElement) {
     let warsawDateElement = warsawElement.querySelector(".date");
@@ -12,15 +25,15 @@ function updateTime() {
     );
   }
 
-  let tokyoElement = document.querySelector("#tokyo");
-  if (tokyoElement) {
-    let tokyoDateElement = tokyoElement.querySelector(".date");
-    let tokyoTimeElement = tokyoElement.querySelector(".time");
+  let chicagoElement = document.querySelector("#chicago");
+  if (chicagoElement) {
+    let chicagoDateElement = chicagoElement.querySelector(".date");
+    let chicagoTimeElement = chicagoElement.querySelector(".time");
 
-    let tokyoTimeZone = moment().tz("Asia/Tokyo");
+    let chicagoTimeZone = moment().tz("America/Chicago");
 
-    tokyoDateElement.innerHTML = tokyoTimeZone.format("MMMM Do YYYY");
-    tokyoTimeElement.innerHTML = tokyoTimeZone.format(
+    chicagoDateElement.innerHTML = chicagoTimeZone.format("MMMM Do YYYY");
+    chicagoTimeElement.innerHTML = chicagoTimeZone.format(
       "h:mm:ss [<small>]A[</small>]"
     );
   }
